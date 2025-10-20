@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Yelis Cake</string>
+    <string-array name="tipos_usuario">
+        <item>Cliente</item>
+        <item>Administrador</item>
+        <item>Invitado</item>
+    </string-array>
+</resources>

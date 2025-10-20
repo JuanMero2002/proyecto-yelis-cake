@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_rosa">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Nombre -->
+        <EditText
+            android:id="@+id/edtNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre Completo"
+            android:backgroundTint="@color/marron"
+            android:textColor="@color/marron"/>
+
+        <!-- Fecha de nacimiento -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de nacimiento"
+            android:textColor="@color/marron"
+            android:layout_marginTop="10dp"/>
+
+        <CalendarView
+            android:id="@+id/calendarNacimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+        <!-- Dirección -->
+        <EditText
+            android:id="@+id/edtDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese su dirección"
+            android:inputType="textPostalAddress"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/marron"/>
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo Electrónico"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/marron"
+            android:textColor="@color/marron"/>
+
+        <!-- Contraseña -->
+        <EditText
+            android:id="@+id/edtPasswordRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/marron"
+            android:textColor="@color/marron"/>
+
+        <!-- Botón Registrar -->
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar"
+            android:textColor="@color/blanco"
+            android:backgroundTint="@color/rosa_fuerte"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
