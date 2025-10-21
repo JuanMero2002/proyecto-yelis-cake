@@ -6,4 +6,7 @@
     <color name="rosa_fuerte">#FF4081</color>
     <color name="blanco">#FFFFFF</color>
     <color name="marron">#795548</color>
+
+    <color name="splash_background">#FFF5F8</color>
+
 </resources>

@@ -27,11 +27,19 @@
             android:textColor="@color/marron"
             android:layout_marginTop="10dp"/>
 
-        <CalendarView
-            android:id="@+id/calendarNacimiento"
+        <EditText
+            android:id="@+id/edtFechaNacimiento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            android:hint="DD/MM/AAAA"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/marron"
+            android:textColor="@color/marron"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:paddingEnd="8dp"/>
 
         <!-- Dirección -->
         <EditText

@@ -1,5 +1,6 @@
 package com.example.yeliscake
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CalendarView
@@ -23,18 +24,34 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         val edtNombre = findViewById<EditText>(R.id.edtNombre)
-        val calendarNacimiento = findViewById<CalendarView>(R.id.calendarNacimiento)
+        val edtFechaNacimiento = findViewById<EditText>(R.id.edtFechaNacimiento)
         val edtDireccion = findViewById<EditText>(R.id.edtDireccion)
         val edtEmail = findViewById<EditText>(R.id.edtEmail)
         val edtPassword = findViewById<EditText>(R.id.edtPasswordRegistro)
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
 
-        // Listener para el calendario
-        calendarNacimiento.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val calendar = Calendar.getInstance()
-            calendar.set(year, month, dayOfMonth)
-            val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            fechaSeleccionada = sdf.format(calendar.time)
+        // Abrir selector de fecha
+        edtFechaNacimiento.setOnClickListener {
+            val hoy = Calendar.getInstance()
+            val anio = hoy.get(Calendar.YEAR)
+            val mes = hoy.get(Calendar.MONTH)
+            val dia = hoy.get(Calendar.DAY_OF_MONTH)
+
+            val picker = DatePickerDialog(
+                this,
+                { _, y, m, d ->
+                    // m es base 0
+                    val fecha = "%02d/%02d/%04d".format(d, m + 1, y)
+                    edtFechaNacimiento.setText(fecha)
+                    fechaSeleccionada = fecha  // ← AQUÍ se actualiza la variable global
+                },
+                anio, mes, dia
+            )
+
+
+            // Sin fechas futuras
+            picker.datePicker.maxDate = hoy.timeInMillis
+            picker.show()
         }
 
         btnRegistrar.setOnClickListener {
@@ -83,7 +100,7 @@ class RegisterActivity : AppCompatActivity() {
             )
 
             // Guardar en Room y Firebase
-            val dao = AppDatabase.getInstance(this).UsuarioDao()
+            val dao = AppDatabase.getInstance(this).usuarioDao()
 
             lifecycleScope.launch {
                 try {

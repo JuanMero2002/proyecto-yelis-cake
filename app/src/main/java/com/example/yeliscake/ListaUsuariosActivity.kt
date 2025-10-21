@@ -24,19 +24,20 @@ class ListaUsuariosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_usuarios)
 
-        // Inicializar vistas
+        // 🔹 Inicializar vistas
         rvUsuarios = findViewById(R.id.rvUsuarios)
         btnRoom = findViewById(R.id.btnRoom)
         btnFirebase = findViewById(R.id.btnFirebase)
 
-        // Configurar RecyclerView
+        // 🔹 Configurar RecyclerView
         adapter = UsuarioAdapter()
         rvUsuarios.layoutManager = LinearLayoutManager(this)
         rvUsuarios.adapter = adapter
 
-        val dao = AppDatabase.getInstance(this).UsuarioDao()
+        // 🔹 Obtener el DAO de Room
+        val dao = AppDatabase.getInstance(this).usuarioDao()
 
-        // Botón para ver datos de Room
+        // 🔹 Botón para ver datos desde Room
         btnRoom.setOnClickListener {
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -47,10 +48,11 @@ class ListaUsuariosActivity : AppCompatActivity() {
             }
         }
 
-        // Botón para ver datos de Firebase
+        // 🔹 Botón para ver datos desde Firebase
         btnFirebase.setOnClickListener {
             FirebaseService.obtenerUsuarios { listaFirestore ->
                 adapter.submitList(listaFirestore)
             }
         }
     }
+}

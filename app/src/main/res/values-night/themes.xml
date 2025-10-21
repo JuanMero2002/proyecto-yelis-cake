@@ -1,6 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.YelisCake" parent="Theme.Material3.DayNight.NoActionBar">
+<!--    <style name="Base.Theme.YelisCake" parent="Theme.Material3.DayNight.NoActionBar">-->
+
+<!--    forzamos a permanecer que se use siempre tema claro sin importar el tema del telefono -->
+    <style name="Theme.YelisCake" parent="Theme.Material3.Light.NoActionBar">
+
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>

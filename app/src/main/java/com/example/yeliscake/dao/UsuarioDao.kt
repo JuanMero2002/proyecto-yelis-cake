@@ -1,4 +1,4 @@
-package com.example.yeliscake.dao
+package com.example.yeliscake
 
 import androidx.room.Dao
 import androidx.room.Insert
