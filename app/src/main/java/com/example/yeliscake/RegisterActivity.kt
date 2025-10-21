@@ -2,20 +2,40 @@ package com.example.yeliscake
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CalendarView
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.yeliscake.cloud.FirebaseService
+import com.example.yeliscake.database.AppDatabase
+import com.example.yeliscake.model.UsuarioEntity
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
+
+    private var fechaSeleccionada: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
         val edtNombre = findViewById<EditText>(R.id.edtNombre)
+        val calendarNacimiento = findViewById<CalendarView>(R.id.calendarNacimiento)
         val edtDireccion = findViewById<EditText>(R.id.edtDireccion)
         val edtEmail = findViewById<EditText>(R.id.edtEmail)
         val edtPassword = findViewById<EditText>(R.id.edtPasswordRegistro)
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
+
+        // Listener para el calendario
+        calendarNacimiento.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            val calendar = Calendar.getInstance()
+            calendar.set(year, month, dayOfMonth)
+            val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            fechaSeleccionada = sdf.format(calendar.time)
+        }
 
         btnRegistrar.setOnClickListener {
             val nombre = edtNombre.text.toString().trim()
@@ -23,33 +43,93 @@ class RegisterActivity : AppCompatActivity() {
             val email = edtEmail.text.toString().trim()
             val password = edtPassword.text.toString().trim()
 
-            // Validación de nombre
+            // Validaciones
             if (nombre.isEmpty()) {
-                Toast.makeText(this, "Ingrese su nombre", Toast.LENGTH_SHORT).show()
+                edtNombre.error = "Ingrese su nombre"
+                edtNombre.requestFocus()
                 return@setOnClickListener
             }
 
-            // Validación de dirección
+            if (fechaSeleccionada.isEmpty()) {
+                Toast.makeText(this, "Seleccione su fecha de nacimiento", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             if (direccion.isEmpty() || direccion.length < 5) {
-                Toast.makeText(this, "Ingrese una dirección válida", Toast.LENGTH_SHORT).show()
+                edtDireccion.error = "Ingrese una dirección válida (mín. 5 caracteres)"
+                edtDireccion.requestFocus()
                 return@setOnClickListener
             }
 
-            // Validación de email
             if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(this, "Ingrese un correo válido", Toast.LENGTH_SHORT).show()
+                edtEmail.error = "Ingrese un correo válido"
+                edtEmail.requestFocus()
                 return@setOnClickListener
             }
 
-            // Validación de contraseña
             if (password.isEmpty() || password.length < 6) {
-                Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
+                edtPassword.error = "La contraseña debe tener al menos 6 caracteres"
+                edtPassword.requestFocus()
                 return@setOnClickListener
             }
 
-            // Si todo está bien
-            Toast.makeText(this, "Usuario registrado exitosamente 🎉", Toast.LENGTH_SHORT).show()
-            finish()
+            // Crear objeto usuario
+            val usuario = UsuarioEntity(
+                nombre = nombre,
+                fechaNacimiento = fechaSeleccionada,
+                direccion = direccion,
+                email = email,
+                password = password
+            )
+
+            // Guardar en Room y Firebase
+            val dao = AppDatabase.getInstance(this).UsuarioDao()
+
+            lifecycleScope.launch {
+                try {
+                    // Verificar si el email ya existe
+                    val usuarioExistente = dao.buscarPorEmail(email)
+                    if (usuarioExistente != null) {
+                        runOnUiThread {
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                "El email ya está registrado",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        return@launch
+                    }
+
+                    // Guardar en Room
+                    dao.insertar(usuario)
+
+                    // Guardar en Firebase
+                    FirebaseService.guardarUsuario(usuario)
+
+                    runOnUiThread {
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Usuario registrado exitosamente 🎉🍰",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        limpiarCampos(edtNombre, edtDireccion, edtEmail, edtPassword)
+                        finish()
+                    }
+                } catch (e: Exception) {
+                    runOnUiThread {
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Error al registrar: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
         }
+    }
+
+    private fun limpiarCampos(vararg campos: EditText) {
+        campos.forEach { it.setText("") }
+        fechaSeleccionada = ""
     }
 }

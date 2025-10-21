@@ -19,7 +19,7 @@
         android:id="@+id/edtUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo o usuario"
+        android:hint="Correo electrónico"
         android:inputType="textEmailAddress"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/marron"
@@ -55,5 +55,16 @@
         android:textColor="@color/blanco"
         android:backgroundTint="@color/marron"
         android:layout_marginTop="10dp"/>
+
+    <!-- Botón para ver usuarios registrados -->
+    <Button
+        android:id="@+id/btnVerUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver Usuarios Registrados"
+        android:textColor="@color/marron"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_marginTop="10dp"
+        style="?attr/borderlessButtonStyle"/>
 
 </LinearLayout>

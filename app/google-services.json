@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "879197259439",
+    "project_id": "yelis-cake",
+    "storage_bucket": "yelis-cake.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879197259439:android:deb259b55b659b36e0b65a",
+        "android_client_info": {
+          "package_name": "com.example.yeliscake"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApiBWzeuqdDLFS7T8AMucoSQDrU870Ys8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

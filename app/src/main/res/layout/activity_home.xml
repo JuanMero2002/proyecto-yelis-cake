@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="@color/fondo_rosa">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🍰 Yeli's Cake 🍰"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/rosa_fuerte"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido"
+        android:textSize="22sp"
+        android:textColor="@color/marron"
+        android:layout_marginBottom="40dp"/>
+
+    <Button
+        android:id="@+id/btnIrRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Usuario"
+        android:textColor="@color/blanco"
+        android:backgroundTint="@color/rosa_fuerte"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnVerUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver Usuarios Registrados"
+        android:textColor="@color/blanco"
+        android:backgroundTint="@color/marron"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:textColor="@color/marron"
+        android:backgroundTint="@android:color/transparent"
+        style="?attr/borderlessButtonStyle"/>
+
+</LinearLayout>
