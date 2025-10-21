@@ -23,7 +23,9 @@
         android:inputType="textEmailAddress"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/marron"
-        android:textColor="@color/marron"/>
+        android:textColor="@color/marron"
+        android:drawableStart="@android:drawable/ic_dialog_email"
+        android:drawablePadding="8dp" />
 
     <!-- Contraseña -->
     <EditText
@@ -34,7 +36,9 @@
         android:inputType="textPassword"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/marron"
-        android:textColor="@color/marron"/>
+        android:textColor="@color/marron"
+        android:drawableStart="@android:drawable/ic_lock_lock"
+        android:drawablePadding="8dp" />
 
     <!-- Botón Login -->
     <Button

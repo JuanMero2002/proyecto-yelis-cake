@@ -8,70 +8,129 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:gravity="center_horizontal">
 
-        <!-- Nombre -->
-        <EditText
-            android:id="@+id/edtNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre Completo"
-            android:backgroundTint="@color/marron"
-            android:textColor="@color/marron"/>
+        <!-- LOGO -->
+        <ImageView
+            android:id="@+id/logoYelisCake"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/logo_yeli_cake"
+            android:contentDescription="Logo Yeli's Cake" />
 
-        <!-- Fecha de nacimiento -->
+        <!-- Título -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha de nacimiento"
-            android:textColor="@color/marron"
-            android:layout_marginTop="10dp"/>
+            android:text="Crear Cuenta Nueva"
+            android:textColor="#E91E63"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp" />
 
-        <EditText
-            android:id="@+id/edtFechaNacimiento"
+        <!-- Subtítulo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Únete a Yeli’s Cake y disfruta de nuestros deliciosos postres"
+            android:textColor="#6D4C41"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="25dp" />
+
+        <!-- CONTENEDOR DE CAMPOS -->
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="DD/MM/AAAA"
-            android:focusable="false"
-            android:clickable="true"
-            android:inputType="none"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/marron"
-            android:textColor="@color/marron"
-            android:drawableEnd="@android:drawable/arrow_down_float"
-            android:paddingEnd="8dp"/>
+            android:background="#FFFFFF"
+            android:padding="18dp"
+            android:elevation="3dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginHorizontal="10dp">
 
-        <!-- Dirección -->
-        <EditText
-            android:id="@+id/edtDireccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ingrese su dirección"
-            android:inputType="textPostalAddress"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/marron"/>
+            <!-- Nombre -->
+            <EditText
+                android:id="@+id/edtNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre Completo"
+                android:backgroundTint="#8D6E63"
+                android:textColor="#4E342E"
+                android:drawableStart="@android:drawable/ic_menu_myplaces"
+                android:drawablePadding="8dp"
+                android:paddingStart="8dp"
+                android:layout_marginBottom="10dp" />
 
-        <!-- Email -->
-        <EditText
-            android:id="@+id/edtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Correo Electrónico"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/marron"
-            android:textColor="@color/marron"/>
+            <!-- Fecha de nacimiento -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha de nacimiento"
+                android:textColor="#4E342E"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp" />
 
-        <!-- Contraseña -->
-        <EditText
-            android:id="@+id/edtPasswordRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/marron"
-            android:textColor="@color/marron"/>
+            <EditText
+                android:id="@+id/edtFechaNacimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="DD/MM/AAAA"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#8D6E63"
+                android:textColor="#4E342E"
+                android:drawableStart="@android:drawable/ic_menu_my_calendar"
+                android:drawablePadding="8dp"
+                android:paddingStart="8dp"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Dirección -->
+            <EditText
+                android:id="@+id/edtDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese su dirección"
+                android:inputType="textPostalAddress"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#8D6E63"
+                android:textColor="#4E342E"
+                android:drawableStart="@android:drawable/ic_menu_mylocation"
+                android:drawablePadding="8dp"
+                android:paddingStart="8dp" />
+
+            <!-- Email -->
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo Electrónico"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#8D6E63"
+                android:textColor="#4E342E"
+                android:drawableStart="@android:drawable/ic_dialog_email"
+                android:drawablePadding="8dp"
+                android:paddingStart="8dp" />
+
+            <!-- Contraseña -->
+            <EditText
+                android:id="@+id/edtPasswordRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#8D6E63"
+                android:textColor="#4E342E"
+                android:drawableStart="@android:drawable/ic_lock_lock"
+                android:drawablePadding="8dp"
+                android:paddingStart="8dp" />
+        </LinearLayout>
 
         <!-- Botón Registrar -->
         <Button
@@ -81,8 +140,8 @@
             android:text="Registrar"
             android:textColor="@color/blanco"
             android:backgroundTint="@color/rosa_fuerte"
-            android:layout_marginTop="20dp"/>
-
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="5dp" />
     </LinearLayout>
-
 </ScrollView>
